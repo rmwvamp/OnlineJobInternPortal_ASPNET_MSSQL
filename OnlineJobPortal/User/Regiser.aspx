@@ -22,34 +22,77 @@
                                     <div class="form-group">
                                         <label>Username</label>
                                         <asp:TextBox ID= "txtUsername" runat="server" CssClass="form-control" placeholder="Enter Unique Username" required></asp:TextBox>
-                                        <%--<textarea class="form-control w-100" name="message" id="message" runat="server"  cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message" required></textarea>--%>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <%--<input class="form-control valid" name="name" id="name" runat="server"  type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name" required>--%>
                                      <label>Password</label>
                                         <asp:TextBox ID= "txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" required></asp:TextBox>
                                        
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <%--<input class="form-control valid" name="email" id="email" runat="server"  type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email" required>--%>
-                                   <label>Password</label>
-                                        <asp:TextBox ID= "TextBox1" runat="server" CssClass="form-control" placeholder="Enter Password" required></asp:TextBox>
-                                       
+                                    <div class="form-group">                                        
+                                   <label>Confirm Password</label>
+                                        <asp:TextBox ID= "txtConfirmPassword" runat="server" CssClass="form-control" placeholder="Enter Confirm Password" required></asp:TextBox>
+                                       <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password & Confirm Password should be same"
+                                          ControlToValidate="txtConfirmPassword"
+                                           ConntrolToCompare="txtPassword" 
+                                           ForeColor="Red" Display="Dynamic" 
+                                           SetFocusOnError="true" 
+                                           Font-Size="Small" ></asp:CompareValidator>
                                         </div>
                                 </div>
                                 <div class="col-12">
+                                        <h6> Personal Information</h6>
+                                </div> 
+                                <div class="col-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="subject" id="subject" runat="server"  type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject" required>
+                                     <label>Full Name</label>
+                                        <asp:TextBox ID= "txtFullName" runat="server" CssClass="form-control" placeholder="Enter Full Name" required></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Name must include Characters from A-Z"
+                                           ForeColor ="Red" Display ="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationExpression="^[a-zA-Z\s]+$" ControlToValidate="txtFullName">
+                                        </asp:RegularExpressionValidator>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                     <label>Address</label>
+                                        <asp:TextBox ID= "txtAddress" runat="server" CssClass="form-control" placeholder="Enter Unique Username" TextMode="MultiLine" required></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                     <label>Mobile Number</label>
+                                        <asp:TextBox ID= "txtMobile" runat="server" CssClass="form-control" placeholder="Enter Mobile Number" required></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Mobile Number must have 10 digits"
+                                           ForeColor ="Red" Display ="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationExpression="^[0-9]{10}$" ControlToValidate="txtMobile">
+                                        </asp:RegularExpressionValidator>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                     <label>Email</label>
+                                        <asp:TextBox ID= "txtEmail" runat="server" CssClass="form-control" placeholder="Enter Email" required
+                                            TextMode="Email" ></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                     <label>Country</label>
+                                            <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="SqlDataSource1" CssClass="form-contact w-100"
+                                                AppendDataBoundItems="true"  DataTextField="CountryName" DataValueField="CountryName">
+                                                <asp:ListItem Value="0">Select Country</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Country is required" ForeColor ="Red" Display ="Dynamic" SetFocusOnError="true" Font-Size="Small" InitialValue="0"></asp:RequiredFieldValidator>
+                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>" SelectCommand="SELECT [CountryName] FROM [Country]"></asp:SqlDataSource>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
 
-                                    <asp:Button ID="btnSend" runat="server" Text="Send" CssClass="button button-contactForm boxed-btn" OnClick="btnSend_Click"/>
+                                    <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn" 
+                                        OnClick="btnRegister_Click"/>
                             </div>
                         <%--</form>--%>
                             </div>

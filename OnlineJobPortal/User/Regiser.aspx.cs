@@ -13,5 +13,10 @@ namespace OnlineJobPortal.User
         {
 
         }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
