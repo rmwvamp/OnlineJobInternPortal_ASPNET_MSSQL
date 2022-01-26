@@ -12,7 +12,7 @@
                     <div class="col-12">
                         <h2 class="contact-title text-center"> Sign Up</h2>
                     </div>
-                    <div class="col-lg-6" mx-auto>
+                    <div class="col-lg-6 mx-auto">
                         <div class="form-contact contact_form" >
                             <div class="row">
                                 <div class="col-12">
@@ -35,12 +35,7 @@
                                     <div class="form-group">                                        
                                    <label>Confirm Password</label>
                                         <asp:TextBox ID= "txtConfirmPassword" runat="server" CssClass="form-control" placeholder="Enter Confirm Password" TextMode="Password" required></asp:TextBox>
-                                       <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password & Confirm Password should be same"
-                                          ControlToValidate="txtConfirmPassword"
-                                           ConntrolToCompare="txtPassword" 
-                                           ForeColor="Red" Display="Dynamic" 
-                                           SetFocusOnError="true" 
-                                           Font-Size="Small" ></asp:CompareValidator>
+                                       <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password & Confirm Password should be same" ControlToValidate="txtConfirmPassword" ControlToCompare="txtPassword" ForeColor="Red" Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ></asp:CompareValidator>
                                         </div>
                                 </div>
                                 <div class="col-12">

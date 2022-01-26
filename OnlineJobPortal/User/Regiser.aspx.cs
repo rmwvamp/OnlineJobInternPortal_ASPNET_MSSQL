@@ -56,7 +56,7 @@ namespace OnlineJobPortal.User
             }
             catch (SqlException ex)
             {
-                if (ex.Message.Contains("Violation of UNIQUE KEY contraint"))
+                if (ex.Message.Contains("Violation of UNIQUE KEY constraint"))
                 {
                     lblMsg.Visible = true;
                     lblMsg.Text = "<b>"+txtUsername.Text.Trim()+ "</b> username already exists, try new one..!";
