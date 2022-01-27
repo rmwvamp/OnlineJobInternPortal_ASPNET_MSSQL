@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace OnlineJobPortal.User
 {
@@ -25,14 +27,14 @@ namespace OnlineJobPortal.User
         {
             try
             {
-                if (ddlLoginType.SelectedValue=="Admin")
+                if (ddlLoginType.SelectedValue == "Admin")
                 {
                     username = ConfigurationManager.AppSettings["username"];
                     password = ConfigurationManager.AppSettings["password"];
-                    if (username==txtUsername.Text.Trim()&&password==txtPassword.Text.Trim())
+                    if (username == txtUsername.Text.Trim() && password == txtPassword.Text.Trim())
                     {
                         Session["admin"] = username;
-                        Response.Redirect("../Admin/Dashboard.aspx",false);
+                        Response.Redirect("../Admin/Dashboard.aspx", false);
 
                     }
                     else
@@ -44,43 +46,40 @@ namespace OnlineJobPortal.User
                 else
                 {
                     con = new SqlConnection(str);
-                    string query = @"Select * from [User] where Username = @Username and Password = @Password;
+                    string query = @"Select * from [User] where Username = @Username and Password = @Password";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Username", txtUsername.Text.Trim());
                     cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
-                    
+
                     con.Open();
-                   sdr= cmd.ExecuteReader();
-                    if (r > 0)
+                    sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        Session["user"] = sdr["Username"].ToString();
+                        Session["userId"] = sdr["UserId"].ToString();
+                        Response.Redirect("Default.aspx", false);
+
+                    }
+                    else
+                    {
+                        showErrorMsg("User");
+                    }
+
+                    con.Close();
+
                 }
-                
+
 
             }
-            catch (SqlException ex)
-            {
-                if (ex.Message.Contains("Violation of UNIQUE KEY constraint"))
-                {
-                    lblMsg.Visible = true;
-                    lblMsg.Text = "<b>" + txtUsername.Text.Trim() + "</b> username already exists, try new one..!";
-                    lblMsg.CssClass = "alert alert-danger";
-                }
 
-                else
-                {
-                    Response.Write("<script>alert('" + ex.Message + "');</script>");
-
-                }
-            }
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
+                con.Close();
 
             }
-            finally
-            {
-                con.Close();
-            }
         }
+
 
         private void showErrorMsg(string userType)
         {
@@ -93,15 +92,10 @@ namespace OnlineJobPortal.User
         private void clear()
         {
             txtUsername.Text = string.Empty;
-            txtAddress.Text = string.Empty;
-            txtEmail.Text = string.Empty;
-            txtMobile.Text = string.Empty;
-            txtFullName.Text = string.Empty;
             txtPassword.Text = string.Empty;
-            txtConfirmPassword.Text = string.Empty;
-            ddlCountry.ClearSelection();
         }
-    
 
+
+    } 
 }
-    }
+

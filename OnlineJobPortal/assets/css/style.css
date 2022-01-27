@@ -3131,7 +3131,7 @@ hr {
 
 .blog_right_sidebar .search_widget .form-control {
     height: 50px;
-    border-color: #f0e9ff;
+    border-color: #fb246a;
     font-size: 13px;
     color: #999999;
     padding-left: 20px;
@@ -3140,7 +3140,7 @@ hr {
 }
 
     .blog_right_sidebar .search_widget .form-control::placeholder {
-        color: #999999
+        color: #777777
     }
 
     .blog_right_sidebar .search_widget .form-control:focus {
