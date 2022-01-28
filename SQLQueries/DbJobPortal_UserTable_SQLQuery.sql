@@ -20,4 +20,5 @@ Country varchar(50)
 alter table [User]
 add unique (Username)
 
+
 Select * from [User]
