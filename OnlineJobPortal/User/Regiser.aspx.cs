@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace OnlineJobPortal.User
 {
     public partial class Regiser : System.Web.UI.Page

@@ -40,7 +40,7 @@ namespace OnlineJobPortal.User
 
         protected void lbLoginorLogout_OnClick(object sender, EventArgs e)
         {
-            if (lbRegisterorProfile.Text=="Login")
+            if (lbLoginorLogout.Text=="Login")
             {
                 Response.Redirect("Login.aspx"); 
             }

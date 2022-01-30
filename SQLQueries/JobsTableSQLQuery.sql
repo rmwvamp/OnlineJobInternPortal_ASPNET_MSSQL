@@ -20,3 +20,17 @@ CreateDate datetime
 )
 
 Select * from Jobs
+
+Alter table Jobs 
+drop Column Qualificaiton
+
+Select * from Jobs
+
+Alter table Jobs 
+drop Column NumberofPosts
+
+
+Alter table Jobs add Qualification varchar(50)
+
+
+Alter table Jobs add NoOfPost int
