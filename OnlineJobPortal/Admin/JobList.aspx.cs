@@ -21,7 +21,7 @@ namespace OnlineJobPortal.Admin
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            if (Session["admin"]==null)
+            if (Session["admin"] == null)
             {
                 Response.Redirect("../User/Login.aspx");
             }
@@ -39,13 +39,13 @@ namespace OnlineJobPortal.Admin
 
         private void ShowJob()
         {
-             query = string.Empty;
-            con=new SqlConnection(str);
+            query = string.Empty;
+            con = new SqlConnection(str);
             query = @"Select Row_Number() over(Order by (Select 1)) as [Sr.No], JobId,Title,NoOfPost,Description,Qualification,Experience,
                         LastDatetoApply,CompanyName,Country,State,CreateDate from Jobs";
-            cmd=new SqlCommand(query,con);
-            SqlDataAdapter sda=new SqlDataAdapter(cmd);
-            dt=new DataTable();
+            cmd = new SqlCommand(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            dt = new DataTable();
             sda.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
@@ -54,7 +54,53 @@ namespace OnlineJobPortal.Admin
 
         protected void GridView1_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            throw new NotImplementedException();
+            GridView1.PageIndex = e.NewPageIndex;
+            ShowJob();
+
+        }
+
+        protected void GridView1_OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                int jobId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                con = new SqlConnection(str);
+                cmd = new SqlCommand("Delete from Jobs where JobId=@id", con);
+                cmd.Parameters.AddWithValue("@id", jobId);
+                con.Open();
+                int r = cmd.ExecuteNonQuery();
+                if (r > 0)
+                {
+                    lblMsg.Text = "Job Delete Successfully!";
+                    lblMsg.CssClass = "alert alert-success";
+
+                }
+                else
+                {
+                    lblMsg.Text = "Cannot delete this record!";
+                    lblMsg.CssClass = "alert alert-danger";
+                }
+                con.Close();
+                GridView1.EditIndex = -1;
+                ShowJob();
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+
+            }
+
+        }
+
+        protected void GridView1_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "EditJob")
+            {
+                Response.Redirect("NewJob.aspx?id="+e.CommandArgument.ToString());
+            }
+
         }
     }
 }

@@ -139,7 +139,7 @@
             </div>
             <div class="row mr-lg-5 ml-lg-5 mb-3 pt-4">
                 <div class="col-md-3 col-md-offset-2 mb-3">
-                    <asp:Button Id-="btnAdd" runat="server" CssClass="btn btn-primary btn-block" BackColor="#7200cf" Text="Add Job" OnClick="OnClick" />
+                    <asp:Button Id="btnAdd" runat="server" CssClass="btn btn-primary btn-block" BackColor="#7200cf" Text="Add Job" OnClick="OnClick" />
                 </div>
 
             </div>
