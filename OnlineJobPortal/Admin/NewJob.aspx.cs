@@ -23,6 +23,8 @@ namespace OnlineJobPortal.Admin
             {
                 Response.Redirect("../User/Login.aspx");
             }
+            Session["title"] = "Add Job";
+
             if (!IsPostBack)
             {
                 fillData();
@@ -58,6 +60,8 @@ namespace OnlineJobPortal.Admin
                         ddlCountry.Text = sdr["Country"].ToString();
                         txtState.Text = sdr["State"].ToString();
                         btnAdd.Text = "Update";
+                        linkBack.Visible = true;
+                        Session["title"] = "Edit Job";
 
                     }
                 }
@@ -86,7 +90,7 @@ namespace OnlineJobPortal.Admin
                     {
                         if (IsValidExtension(fuCompanyLogo.FileName))
                         {
-                            concatQuery = "CompanyImage=@CompanyImage";
+                            concatQuery = "CompanyImage=@CompanyImage,";
                         }
                         else
                         {
@@ -100,10 +104,10 @@ namespace OnlineJobPortal.Admin
                         concatQuery = string.Empty;
 
                     }
-                    query = @"Update into Jobs set Title=@Title,Description=@Description,Description=@Description," +
+                    query = @"Update Jobs set Title=@Title,Description=@Description,Experience=@Experience," +
                             "Specialization=@Specialization,LastDatetoApply=@LastDatetoApply,Salary=@Salary,JobType=@JobType," +
                             "CompanyName=@CompanyName," + concatQuery + "Website=@Website,Email=@Email," +
-                            "Address=@Address,Country=@Country,State=@State,Qualification=@Qualification,NoOfPosts=@NoOfPost where JobId=@id";
+                            "Address=@Address,Country=@Country,State=@State,Qualification=@Qualification,NoOfPost=@NoOfPost where JobId=@id";
                     type = "updated";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
@@ -121,8 +125,7 @@ namespace OnlineJobPortal.Admin
                     cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
                     cmd.Parameters.AddWithValue("@Qualification", txtQualification.Text.Trim());
                     cmd.Parameters.AddWithValue("@NoOfPost", txtNumberofPosts.Text.Trim());
-                    cmd.Parameters.AddWithValue("@NoOfPost", txtNumberofPosts.Text.Trim());
-                    cmd.Parameters.AddWithValue("@id",Request.QueryString["id"].ToString());
+                    cmd.Parameters.AddWithValue("@id", Request.QueryString["id"].ToString());
                     if (fuCompanyLogo.HasFile)
                     {
                         if (IsValidExtension(fuCompanyLogo.FileName))
@@ -150,8 +153,8 @@ namespace OnlineJobPortal.Admin
                 else
                 {
                     query = @"Insert into Jobs values(@Title,@Description,@Experience," +
-                        "@Specialization,@LastDatetoApply,@Salary,@JobType,@CompanyName,@CompanyImage,@Website,@Email," +
-                        "@Address,@Country,@State,@CreateDate,@Qualification,@NoOfPost)";
+                        "@Specialization,@LastDatetoApply,@Salary,@JobType,@CompanyName,@Website,@Email," +
+                        "@Address,@Country,@State,@CreateDate,@Qualification,@NoOfPost,@CompanyImage)";
                     type = "saved";
 
                     DateTime time = DateTime.Now;
@@ -196,7 +199,7 @@ namespace OnlineJobPortal.Admin
                         isValidToExecute = true;
                     }
 
-                    
+
                 }
                 if (isValidToExecute)
                 {
@@ -204,13 +207,13 @@ namespace OnlineJobPortal.Admin
                     int res = cmd.ExecuteNonQuery();
                     if (res > 0)
                     {
-                        lblMsg.Text = "Job "+type+" Successfully!";
+                        lblMsg.Text = "Job " + type + " Successfully!";
                         lblMsg.CssClass = "alert alert-success";
                         Clear();
                     }
                     else
                     {
-                        lblMsg.Text = "Cannot "+type+" the records, please try again after sometime..!";
+                        lblMsg.Text = "Cannot " + type + " the records, please try again after sometime..!";
                         lblMsg.CssClass = "alert alert-success";
                     }
                 }
@@ -246,8 +249,7 @@ namespace OnlineJobPortal.Admin
             txtAddress.Text = string.Empty;
             txtState.Text = string.Empty;
             ddlJobType.ClearSelection();
-            ;
-            ddlCountry.ClearSelection();
+                        ddlCountry.ClearSelection();
         }
 
         private bool IsValidExtension(string fileName)
