@@ -134,7 +134,7 @@ namespace OnlineJobPortal.Admin
                             imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
                             fuCompanyLogo.PostedFile.SaveAs(Server.MapPath("~/Images/") + obj.ToString() +
                                                             fuCompanyLogo.FileName);
-                            //cmd.Parameters.AddWithValue("@CompanyImage", fuCompanyLogo.Text.Trim());
+                            cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
                             isValidToExecute = true;
 
                         }
@@ -183,7 +183,7 @@ namespace OnlineJobPortal.Admin
                             imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
                             fuCompanyLogo.PostedFile.SaveAs(Server.MapPath("~/Images/") + obj.ToString() +
                                                             fuCompanyLogo.FileName);
-                            //cmd.Parameters.AddWithValue("@CompanyImage", fuCompanyLogo.Text.Trim());
+                            cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
                             isValidToExecute = true;
 
                         }
@@ -249,7 +249,7 @@ namespace OnlineJobPortal.Admin
             txtAddress.Text = string.Empty;
             txtState.Text = string.Empty;
             ddlJobType.ClearSelection();
-                        ddlCountry.ClearSelection();
+            ddlCountry.ClearSelection();
         }
 
         private bool IsValidExtension(string fileName)
