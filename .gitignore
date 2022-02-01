@@ -1,5 +1,7 @@
 packages/
 .vs/
 .vs/
-OnlineJobPortal\Images/
-OnlineJobPortal\bin/
+**OnlineJobPortal/Images/
+**OnlineJobPortal/bin/
+/OnlineJobPortal/Images/
+/OnlineJobPortal/bin/
