@@ -22,7 +22,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter Unique Username" required></asp:TextBox>
+                                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter Unique Username" required ></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-sm-6">

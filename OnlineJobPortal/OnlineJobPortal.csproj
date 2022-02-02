@@ -84,13 +84,34 @@
     <Content Include="assets\css\slicknav.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\styles.css" />
+    <Content Include="assets\css\theme.css" />
     <Content Include="assets\css\themify-icons.css" />
+    <Content Include="assets\fonts\fa-brands-400.eot" />
     <Content Include="assets\fonts\fa-brands-400.svg" />
+    <Content Include="assets\fonts\fa-brands-400.ttf" />
+    <Content Include="assets\fonts\fa-brands-400.woff" />
+    <Content Include="assets\fonts\fa-brands-400.woff2" />
+    <Content Include="assets\fonts\fa-regular-400.eot" />
     <Content Include="assets\fonts\fa-regular-400.svg" />
+    <Content Include="assets\fonts\fa-regular-400.ttf" />
+    <Content Include="assets\fonts\fa-regular-400.woff" />
+    <Content Include="assets\fonts\fa-regular-400.woff2" />
+    <Content Include="assets\fonts\fa-solid-900.eot" />
     <Content Include="assets\fonts\fa-solid-900.svg" />
+    <Content Include="assets\fonts\fa-solid-900.ttf" />
+    <Content Include="assets\fonts\fa-solid-900.woff" />
+    <Content Include="assets\fonts\fa-solid-900.woff2" />
+    <Content Include="assets\fonts\Flaticon.eot" />
     <Content Include="assets\fonts\flaticon.html" />
     <Content Include="assets\fonts\Flaticon.svg" />
+    <Content Include="assets\fonts\Flaticon.ttf" />
+    <Content Include="assets\fonts\Flaticon.woff" />
+    <Content Include="assets\fonts\Flaticon.woff2" />
+    <Content Include="assets\fonts\themify.eot" />
     <Content Include="assets\fonts\themify.svg" />
+    <Content Include="assets\fonts\themify.ttf" />
+    <Content Include="assets\fonts\themify.woff" />
+    <Content Include="assets\fonts\_flaticon.scss" />
     <Content Include="assets\img\about\about_lft.png" />
     <Content Include="assets\img\about\about_right.png" />
     <Content Include="assets\img\about\pet_care.png" />
@@ -147,11 +168,13 @@
     <Content Include="assets\img\gallery\how-applybg.png" />
     <Content Include="assets\img\hero\about.jpg" />
     <Content Include="assets\img\hero\h1_hero.jpg" />
+    <Content Include="assets\img\icon\editIcon.png" />
     <Content Include="assets\img\icon\form.png" />
     <Content Include="assets\img\icon\job-list1.png" />
     <Content Include="assets\img\icon\job-list2.png" />
     <Content Include="assets\img\icon\job-list3.png" />
     <Content Include="assets\img\icon\job-list4.png" />
+    <Content Include="assets\img\icon\trashIcon.png" />
     <Content Include="assets\img\logo\form-iocn.jpg" />
     <Content Include="assets\img\logo\loder.jpg" />
     <Content Include="assets\img\logo\logo.png" />
@@ -221,6 +244,33 @@
     <Content Include="assets\js\vendor\jquery-1.12.4.min.js" />
     <Content Include="assets\js\vendor\modernizr-3.5.0.min.js" />
     <Content Include="assets\js\wow.min.js" />
+    <Content Include="assets\scss\style.scss" />
+    <Content Include="assets\scss\_apply-proces.scss" />
+    <Content Include="assets\scss\_blog.scss" />
+    <Content Include="assets\scss\_blog_page.scss" />
+    <Content Include="assets\scss\_bradcam.scss" />
+    <Content Include="assets\scss\_color.scss" />
+    <Content Include="assets\scss\_common.scss" />
+    <Content Include="assets\scss\_contact.scss" />
+    <Content Include="assets\scss\_cv-online.scss" />
+    <Content Include="assets\scss\_elements.scss" />
+    <Content Include="assets\scss\_extend.scss" />
+    <Content Include="assets\scss\_featured-Jobs.scss" />
+    <Content Include="assets\scss\_footer.scss" />
+    <Content Include="assets\scss\_h1-hero.scss" />
+    <Content Include="assets\scss\_headerMenu.scss" />
+    <Content Include="assets\scss\_job_details.scss" />
+    <Content Include="assets\scss\_job_listing.scss" />
+    <Content Include="assets\scss\_mixins.scss" />
+    <Content Include="assets\scss\_overlay.scss" />
+    <Content Include="assets\scss\_pagination.scss" />
+    <Content Include="assets\scss\_recent.scss" />
+    <Content Include="assets\scss\_services.scss" />
+    <Content Include="assets\scss\_services_section.scss" />
+    <Content Include="assets\scss\_support-company.scss" />
+    <Content Include="assets\scss\_team.scss" />
+    <Content Include="assets\scss\_testimonial.scss" />
+    <Content Include="assets\scss\_variables.scss" />
     <Content Include="Global.asax" />
     <Content Include="User\About.aspx" />
     <Content Include="User\Contact.aspx" />
@@ -228,6 +278,7 @@
     <Content Include="User\JobDetails.aspx" />
     <Content Include="User\JobListing.aspx" />
     <Content Include="User\Login.aspx" />
+    <Content Include="User\Profile.aspx" />
     <Content Include="User\Regiser.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -313,6 +364,13 @@
     <Compile Include="User\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User\Regiser.aspx.cs">
       <DependentUpon>Regiser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -329,53 +387,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\fonts\fa-brands-400.eot" />
-    <Content Include="assets\fonts\fa-brands-400.ttf" />
-    <Content Include="assets\fonts\fa-brands-400.woff" />
-    <Content Include="assets\fonts\fa-brands-400.woff2" />
-    <Content Include="assets\fonts\fa-regular-400.eot" />
-    <Content Include="assets\fonts\fa-regular-400.ttf" />
-    <Content Include="assets\fonts\fa-regular-400.woff" />
-    <Content Include="assets\fonts\fa-regular-400.woff2" />
-    <Content Include="assets\fonts\fa-solid-900.eot" />
-    <Content Include="assets\fonts\fa-solid-900.ttf" />
-    <Content Include="assets\fonts\fa-solid-900.woff" />
-    <Content Include="assets\fonts\fa-solid-900.woff2" />
-    <Content Include="assets\fonts\Flaticon.eot" />
-    <Content Include="assets\fonts\Flaticon.ttf" />
-    <Content Include="assets\fonts\Flaticon.woff" />
-    <Content Include="assets\fonts\Flaticon.woff2" />
-    <Content Include="assets\fonts\themify.eot" />
-    <Content Include="assets\fonts\themify.ttf" />
-    <Content Include="assets\fonts\themify.woff" />
-    <Content Include="assets\fonts\_flaticon.scss" />
-    <Content Include="assets\scss\style.scss" />
-    <Content Include="assets\scss\_apply-proces.scss" />
-    <Content Include="assets\scss\_blog.scss" />
-    <Content Include="assets\scss\_blog_page.scss" />
-    <Content Include="assets\scss\_bradcam.scss" />
-    <Content Include="assets\scss\_color.scss" />
-    <Content Include="assets\scss\_common.scss" />
-    <Content Include="assets\scss\_contact.scss" />
-    <Content Include="assets\scss\_cv-online.scss" />
-    <Content Include="assets\scss\_elements.scss" />
-    <Content Include="assets\scss\_extend.scss" />
-    <Content Include="assets\scss\_featured-Jobs.scss" />
-    <Content Include="assets\scss\_footer.scss" />
-    <Content Include="assets\scss\_h1-hero.scss" />
-    <Content Include="assets\scss\_headerMenu.scss" />
-    <Content Include="assets\scss\_job_details.scss" />
-    <Content Include="assets\scss\_job_listing.scss" />
-    <Content Include="assets\scss\_mixins.scss" />
-    <Content Include="assets\scss\_overlay.scss" />
-    <Content Include="assets\scss\_pagination.scss" />
-    <Content Include="assets\scss\_recent.scss" />
-    <Content Include="assets\scss\_services.scss" />
-    <Content Include="assets\scss\_services_section.scss" />
-    <Content Include="assets\scss\_support-company.scss" />
-    <Content Include="assets\scss\_team.scss" />
-    <Content Include="assets\scss\_testimonial.scss" />
-    <Content Include="assets\scss\_variables.scss" />
     <Content Include="Admin\AdminMaster.Master" />
     <None Include="packages.config" />
     <Content Include="User\UserMaster.Master" />

@@ -5,11 +5,10 @@
 <html>
 <head runat="server">
     <title>Job Portal - Admin Area</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/theme.css">
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../assets/css/styles.css"/>
+    <link rel="stylesheet" href="../assets/css/theme.css"/>
 
     <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
