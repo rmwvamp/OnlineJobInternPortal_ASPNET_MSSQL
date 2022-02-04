@@ -279,7 +279,8 @@
     <Content Include="User\JobListing.aspx" />
     <Content Include="User\Login.aspx" />
     <Content Include="User\Profile.aspx" />
-    <Content Include="User\Regiser.aspx" />
+    <Content Include="User\Register.aspx" />
+    <Content Include="User\ResumeBuild.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -371,12 +372,19 @@
     <Compile Include="User\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User\Regiser.aspx.cs">
-      <DependentUpon>Regiser.aspx</DependentUpon>
+    <Compile Include="User\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User\Regiser.aspx.designer.cs">
-      <DependentUpon>Regiser.aspx</DependentUpon>
+    <Compile Include="User\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\ResumeBuild.aspx.cs">
+      <DependentUpon>ResumeBuild.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\ResumeBuild.aspx.designer.cs">
+      <DependentUpon>ResumeBuild.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\UserMaster.Master.cs">
       <DependentUpon>UserMaster.Master</DependentUpon>
@@ -385,6 +393,7 @@
     <Compile Include="User\UserMaster.Master.designer.cs">
       <DependentUpon>UserMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AdminMaster.Master" />
@@ -401,6 +410,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Models\" />
+    <Folder Include="Resumes\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
