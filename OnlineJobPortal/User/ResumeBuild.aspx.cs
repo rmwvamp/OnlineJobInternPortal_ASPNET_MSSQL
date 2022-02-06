@@ -85,7 +85,7 @@ namespace OnlineJobPortal.User
             catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
-                throw;
+                
             }
             finally
             {
@@ -114,19 +114,20 @@ namespace OnlineJobPortal.User
                         }
                         else
                         {
-                            //concatQuery = string.Empty;
-                            lblMsg.Visible = true;
-                            lblMsg.Text = "Please select .doc,.docx, .pdf file for resume!";
-                            lblMsg.CssClass = "alert alert-danger"; lblMsg.Visible = true;
+                            concatQuery = string.Empty;
+                           
                         }
                     }
                     else
                     {
                         concatQuery = string.Empty;
                     }
-                    query = @"Update [User] set Username=@Username,Name=@Name,Email=@Email,Mobile=@Mobile,TenthGrade=@TenthGrade,TwelfthGrade=@TwelfthGrade," +
-                             "GraduationGrade=@GraduationGrade,PostGraduationGrade=@PostGraduationGrade,Phd=@Phd," +
-                                "WorksOn-@WorksOn,Experience=@Experience," + concatQuery + "Address=@Address,Country=@Country where UserId=@UserId";
+
+                    query =
+                        @"Update [User] set Username=@Username,Name=@Name,Email=@Email,Mobile=@Mobile,TenthGrade=@TenthGrade,TwelfthGrade=@TwelfthGrade," +
+                        "GraduationGrade=@GraduationGrade,PostGraduationGrade=@PostGraduationGrade,Phd=@Phd," +
+                        "WorksOn-@WorksOn,Experience=@Experience," + concatQuery +
+                        "Address=@Address,Country=@Country where UserId=@UserId";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Username", txtUsername.Text.Trim());
                     cmd.Parameters.AddWithValue("@Name", txtFullName.Text.Trim());
@@ -142,13 +143,24 @@ namespace OnlineJobPortal.User
                     cmd.Parameters.AddWithValue("@Address", txtAdress.Text.Trim());
                     cmd.Parameters.AddWithValue("@Country", ddlCountry.SelectedValue);
                     cmd.Parameters.AddWithValue("@UserId", Request.QueryString["id"]);
-                    if (isValid)
+                    if (fuResume.HasFile)
                     {
-                        Guid obj = Guid.NewGuid();
-                        filePath = "Resumes/" + obj.ToString() + fuResume.FileName;
-                        fuResume.PostedFile.SaveAs(Server.MapPath("~/Resumes/") + obj.ToString() + fuResume.FileName);
-                        cmd.Parameters.AddWithValue("@resume", filePath);
-                        //isValidToExecute = true;
+                        if (Utils.IsValidExtension4Resume(fuResume.FileName))
+                            {
+                                Guid obj = Guid.NewGuid();
+                                filePath = "Resumes/" + obj.ToString() + fuResume.FileName;
+                                fuResume.PostedFile.SaveAs(Server.MapPath("~/Resumes/") + obj.ToString() + fuResume.FileName);
+                                cmd.Parameters.AddWithValue("@resume", filePath);
+                                isValid = true;
+                            }
+                        else
+                        {
+                            concatQuery = string.Empty;
+                            lblMsg.Visible = true;
+                            lblMsg.Text = "Please select .doc,.docx, .pdf file for resume!";
+                            lblMsg.CssClass = "alert alert-danger";
+                            lblMsg.Visible = true;
+                        }
 
                     }
                     else
@@ -160,20 +172,55 @@ namespace OnlineJobPortal.User
 
                     if (isValid)
                     {
-                        
+                        con.Open();
+                        int r = cmd.ExecuteNonQuery();
+                        if (r > 0)
+                        {
+                            lblMsg.Visible = true;
+                            lblMsg.Text = "Resume details updated successfully..!";
+                            lblMsg.CssClass = "alert alert-success";
+                        }
+                        else
+                        {
+                            lblMsg.Visible = true;
+                            lblMsg.Text = "Cannot update the records, please try again after sometime..!";
+                            lblMsg.CssClass = "alert alert-danger";
+
+                        }
                     }
 
                 }
                 else
                 {
-                    isV
+                    lblMsg.Visible = true;
+                    lblMsg.Text = "Cannot update the records, please try<b>Relogin</b>!";
+                    lblMsg.CssClass = "alert alert-danger";
                 }
 
             }
-            catch (Exception exception)
+            catch (SqlException ex)
             {
-                Console.WriteLine(exception);
-                throw;
+                if (ex.Message.Contains("Violation of UNIQUE KEY constraint"))
+                {
+                    lblMsg.Visible = true;
+                    lblMsg.Text = "<b>" + txtUsername.Text.Trim() + "</b> username already exists, try new one..!";
+                    lblMsg.CssClass = "alert alert-danger";
+                }
+                else
+                {
+                    Response.Write("<script>alert('" + ex.Message + "');</script>");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+
+
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }

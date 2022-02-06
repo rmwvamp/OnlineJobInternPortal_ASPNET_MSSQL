@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -44,8 +45,17 @@ namespace OnlineJobPortal.User
             sda=new SqlDataAdapter(cmd);
             dt=new DataTable();
             sda.Fill(dt);
-            dlProfile.DataSource = dt;
+            if (dt.Rows.Count>0)
+            {
+                dlProfile.DataSource = dt;
             dlProfile.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert('Please do login again with your latest username ');</script>");
+
+                
+            }
         }
 
         protected void dlProfile_OnItemCommand(object source, DataListCommandEventArgs e)

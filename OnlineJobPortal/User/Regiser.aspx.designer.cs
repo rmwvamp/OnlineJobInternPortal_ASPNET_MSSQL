@@ -11,7 +11,7 @@ namespace OnlineJobPortal.User
 {
 
 
-    public partial class Register1
+    public partial class Register
     {
 
         /// <summary>

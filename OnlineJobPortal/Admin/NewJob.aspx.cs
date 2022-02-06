@@ -177,7 +177,7 @@ namespace OnlineJobPortal.Admin
                     cmd.Parameters.AddWithValue("@NoOfPost", txtNumberofPosts.Text.Trim());
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (Utils.Utils.IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             Guid obj = Guid.NewGuid();
                             imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;

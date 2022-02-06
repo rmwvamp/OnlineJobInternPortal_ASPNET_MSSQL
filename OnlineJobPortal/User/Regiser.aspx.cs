@@ -7,11 +7,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace OnlineJobPortal.User
 {
-    public partial class Register1 : System.Web.UI.Page
+    public partial class Regiser : System.Web.UI.Page
     {
-       SqlConnection con;
+        SqlConnection con;
         SqlCommand cmd;
         string str = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)

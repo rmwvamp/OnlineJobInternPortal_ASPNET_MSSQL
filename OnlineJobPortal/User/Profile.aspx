@@ -42,7 +42,7 @@
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary text-capitalize">
+                                    <div class="col-sm-9 text-secondary text-secondary">
                                         <%#Eval("Email") %>
                                     </div>
                                 </div>

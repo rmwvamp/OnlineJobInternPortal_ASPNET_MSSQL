@@ -32,7 +32,7 @@ namespace OnlineJobPortal.User
             }
             else
             {
-                Response.Redirect("Regiser.aspx");
+                Response.Redirect("Register.aspx");
             }
             
             throw new NotImplementedException();
@@ -47,7 +47,7 @@ namespace OnlineJobPortal.User
             else
             {
                 Session.Abandon();
-                Response.Redirect("Regiser.aspx");
+                Response.Redirect("Register.aspx");
             }
 
             throw new NotImplementedException();
