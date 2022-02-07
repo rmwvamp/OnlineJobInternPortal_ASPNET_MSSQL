@@ -65,7 +65,7 @@ namespace OnlineJobPortal.User
                         txtEmail.Text = sdr["Email"].ToString();
                         txtMobile.Text = sdr["Mobile"].ToString();
                         txtTenth.Text = sdr["TenthGrade"].ToString();
-                        txtTwelfth.Text = sdr["Twelfth Grade"].ToString();
+                        txtTwelfth.Text = sdr["TwelfthGrade"].ToString();
                         txtGraduation.Text = sdr["GraduationGrade"].ToString();
                         txtPostGraduation.Text = sdr["PostGraduationGrade"].ToString();
                         txtPhd.Text = sdr["Phd"].ToString();
@@ -126,7 +126,7 @@ namespace OnlineJobPortal.User
                     query =
                         @"Update [User] set Username=@Username,Name=@Name,Email=@Email,Mobile=@Mobile,TenthGrade=@TenthGrade,TwelfthGrade=@TwelfthGrade," +
                         "GraduationGrade=@GraduationGrade,PostGraduationGrade=@PostGraduationGrade,Phd=@Phd," +
-                        "WorksOn-@WorksOn,Experience=@Experience," + concatQuery +
+                        "WorksOn=@WorksOn,Experience=@Experience," + concatQuery +
                         "Address=@Address,Country=@Country where UserId=@UserId";
                     cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@Username", txtUsername.Text.Trim());

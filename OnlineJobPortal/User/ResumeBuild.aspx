@@ -129,7 +129,7 @@
                                     <label>Resume</label>
                                     <asp:FileUpload ID="fuResume" runat="server" CssClass="form-control pt-2" 
                                                     ToolTip=".doc, .docx, .pdf extension only"/>
-                                    </asp:TextBox>
+                                    <%--</asp:TextBox>--%>
                                 </div>
                             </div>
                         </div>
