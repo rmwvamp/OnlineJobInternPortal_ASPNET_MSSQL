@@ -221,6 +221,7 @@ namespace OnlineJobPortal.User
             finally
             {
                 con.Close();
+                Response.Redirect("../User/Profile.aspx");
             }
         }
     }

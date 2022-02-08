@@ -11,7 +11,7 @@
                         <div class="col-md-4 mb-3">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="UserPic" class="rounded-circle"
+                                    <img src="../assets/img/userlogo/avatar7.png" alt="UserPic" class="rounded-circle"
                                         width="150" />
                                     <div class="mt-3">
                                         <h4 class="text-capitalize"><%#Eval("Name") %></h4>
@@ -21,7 +21,7 @@
                                         </p>
                                     </div>
 
-                                </div> 
+                                </div>
                             </div>
 
                         </div>
@@ -39,44 +39,50 @@
                                         </div>
                                     </div>
                                     <hr />
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Email</h6>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Email</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary text-secondary">
+                                            <%#Eval("Email") %>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-9 text-secondary text-secondary">
-                                        <%#Eval("Email") %>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Mobile</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary text-capitalize">
+                                            <%#Eval("Mobile") %>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Address</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary text-capitalize">
+                                            <%#Eval("Address") %>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">Resume Upload</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary text-capitalize">
+                                            <%#Eval("Resume") ==DBNull.Value?"Not Uploaded":"Uploaded" %>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="button button-contactForm boxed-btn"
+                                                CommandName="EditUserProfile" CommandArgument='<%#Eval("UserId") %>' />
+                                        </div>
                                     </div>
                                 </div>
-                                <hr />
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Mobile</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary text-capitalize">
-                                    <%#Eval("Mobile") %>
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary text-capitalize">
-                                <%#Eval("Address") %>
-                            </div>
-                        </div>
-                        <hr />
-                        <div class="col-sm-3">
-                            <h6 class="mb-0">Resume Upload</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary text-capitalize">
-                            <%#Eval("Resume") ==DBNull.Value?"Not Uploaded":"Uploaded" %>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="button button-contactForm boxed-btn"
-                                CommandName="EditUserProfile" CommandArgument='<%#Eval("UserId") %>' />
-                        </div>
-                    </div>
                 </ItemTemplate>
             </asp:DataList>
         </div>
