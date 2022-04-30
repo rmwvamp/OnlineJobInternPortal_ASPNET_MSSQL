@@ -155,8 +155,8 @@
                                 <div class="select-job-items2">
                                     <asp:DropDownList ID="ddlCountry" runat="server" name="select" CssClass="form-control w-100"
                                         DataSourceID="SqlDataSource1" AppendDataBoundItems="True" DataTextField="CountryName"
-                                        DataValueField="CountryName" OnSelectedIndexChanged="ddlCountry_OnSelectedIndexChanged"
-                                        AutoPostBack="true">
+                                        DataValueField="CountryName" 
+                                        AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged1">
                                         <asp:ListItem Value="0">Country</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>"
@@ -171,7 +171,7 @@
                                     <div class="checkbox checkbox-primary">
                                         <asp:CheckBoxList ID="CheckBoxList1" runat="server" AutoPostBack="True"
                                             RepeatDirection="Vertical" RepeatLayout="Flow" CssClass="styled"
-                                            TextAlign="Right" OnSelectedIndexChanged="CheckBoxList1_OnSelectedIndexChanged">
+                                            TextAlign="Right" OnSelectedIndexChanged="CheckBoxList1_SelectedIndexChanged1">
                                             <asp:ListItem>Full Time</asp:ListItem>
                                             <asp:ListItem>Part Time</asp:ListItem>
                                             <asp:ListItem>Remote</asp:ListItem>
@@ -192,7 +192,7 @@
                                     </div>
                                     <div class="radiobuttoncontainer">
                                         <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="radiobuttonlist" AutoPostBack="true"
-                                            OnSelectedIndexChanged="RadioButtonList1_OnSelectedIndexChanged" RepeatLayout="Flow">
+                                           OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged1" RepeatLayout="Flow">
                                             <asp:ListItem Value="0" Selected="True">Any</asp:ListItem>
                                             <asp:ListItem Value="1">Today</asp:ListItem>
                                             <asp:ListItem Value="2">Last 2 days</asp:ListItem>
@@ -205,11 +205,11 @@
                                 <!-- select-Categories End -->
                                 <div class="mb-1">
                                     <asp:LinkButton ID="lbFilter" runat="server" CssClass="btn btn-sm" Width="100%"
-                                        OnClick="lbFilter_OnClick">Filter</asp:LinkButton>
+                                         OnClick="lbFilter_Click1">Filter</asp:LinkButton>
                                 </div>
                                 <div class="mb-4">
                                     <asp:LinkButton ID="lbReset" runat="server" CssClass="btn btn-sm" Width="100%"
-                                        OnClick="lbReset_OnClick">Reset</asp:LinkButton>
+                                         OnClick="lbReset_Click1">Reset</asp:LinkButton>
                                 </div>
 
                             </div>

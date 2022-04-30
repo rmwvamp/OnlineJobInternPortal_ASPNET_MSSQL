@@ -153,8 +153,8 @@ namespace OnlineJobPortal.Admin
                 else
                 {
                     query = @"Insert into Jobs values(@Title,@Description,@Experience," +
-                        "@Specialization,@LastDatetoApply,@Salary,@JobType,@CompanyName,@Website,@Email," +
-                        "@Address,@Country,@State,@CreateDate,@Qualification,@NoOfPost,@CompanyImage)";
+                        "@Specialization,@LastDatetoApply,@Salary,@JobType,@CompanyName,@CompanyImage,@Website,@Email," +
+                        "@Address,@Country,@State,@CreateDate,@Qualification,@NoOfPost)";
                     type = "saved";
 
                     DateTime time = DateTime.Now;
